@@ -6,6 +6,7 @@ const supabaseClient = window.supabase.createClient(
   supabaseKey
 );
 
+// LOGIN
 async function login() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
@@ -15,10 +16,15 @@ async function login() {
     password,
   });
 
-  if (error) alert(error.message);
-  else alert("Login success");
+  if (error) {
+    alert(error.message);
+  } else {
+    alert("Login success");
+    window.location.href = "dashboard.html"; // redirect
+  }
 }
 
+// SIGNUP
 async function signup() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
@@ -28,6 +34,15 @@ async function signup() {
     password,
   });
 
-  if (error) alert(error.message);
-  else alert("Signup success");
+  if (error) {
+    alert(error.message);
+  } else {
+    alert("Signup success");
+  }
+}
+
+// LOGOUT (for dashboard)
+async function logout() {
+  await supabaseClient.auth.signOut();
+  window.location.href = "index.html";
 }
