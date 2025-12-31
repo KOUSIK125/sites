@@ -16,7 +16,7 @@ async function login() {
   });
 
   if (error) alert(error.message);
-  else window.location.href = "dashboard.html";
+  else alert("Login success");
 }
 
 async function signup() {
